@@ -1,0 +1,13 @@
+import os
+
+def print_tree(path, indent=0):
+    """Recursively prints the file tree of a given directory."""
+    if os.path.isfile(path):
+        print(" " * indent + os.path.basename(path))
+    else:
+        print(" " * indent + os.path.basename(path) + "/")
+        for filename in sorted(os.listdir(path)):
+            print_tree(os.path.join(path, filename), indent=indent+2)
+            print_tree(".")
+
+
